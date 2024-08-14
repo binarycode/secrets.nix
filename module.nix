@@ -42,6 +42,7 @@ in {
         };
       };
       config.decrypted = "${active}/${name}";
+      config.name = name;
     });
   in lib.mkOption {
     type = lib.types.attrsOf secret;
