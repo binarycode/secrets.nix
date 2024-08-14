@@ -52,7 +52,7 @@ in {
     script = "secrets";
     secrets = builtins.attrValues config.secrets;
     decrypt = secret: let
-      path = "$tmp/${secret.decrypted}";
+      path = "$tmp/${secret.name}";
     in ''
       mkdir --parents --mode 755 $(dirname "${path}")
       ${pkgs.age}/bin/age --decrypt --identity "${key}" -o "${path}" "${secret.encrypted}"
