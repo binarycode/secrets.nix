@@ -6,6 +6,13 @@ in {
   options.secrets = let
     secret = lib.types.submodule ({ name, ... }: {
       options = {
+        name = lib.mkOption {
+          type = lib.types.str;
+          readOnly = true;
+          description = ''
+            Secret name
+          '';
+        };
         decrypted = lib.mkOption {
           type = lib.types.str;
           readOnly = true;
