@@ -54,7 +54,9 @@ in {
     decrypt = secret: let
       path = "$tmp/${builtins.baseNameOf secret.decrypted}";
     in ''
+      mkdir --parents --mode 755 $(dirname "${path}")
       ${pkgs.age}/bin/age --decrypt --identity "${key}" -o "${path}" "${secret.encrypted}"
+      chmod 555 $(dirname "${path}")
       chmod ${secret.permissions} "${path}"
       chown ${builtins.toString secret.uid}:${builtins.toString secret.gid} "${path}"
     '';
