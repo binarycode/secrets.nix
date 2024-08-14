@@ -21,12 +21,14 @@ in {
         };
         uid = lib.mkOption {
           type = lib.types.int;
+          default = 0;
           description = ''
             Decrypted secret owner UID
           '';
         };
         gid = lib.mkOption {
           type = lib.types.int;
+          default = 0;
           description = ''
             Decrypted secret owned GID
           '';
